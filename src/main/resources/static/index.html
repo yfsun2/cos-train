@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.js"></script>
+    <style type="text/css">
+        button{
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div style="float:left;">
+    <div id="imgdiv" style=" height: 150px;width: 150px;border: 1px solid black;cursor: pointer;border-radius: 50%"></div>
+    <button  onclick="{$('#img').click()}">上传图片</button>
+</div>
+<div style="float:left;">
+    <div id="videodiv" style="height: 480px;width: 640px;border:1px solid black;cursor: pointer;" ></div>
+    <button  onclick="{$('#video').click()}">上传视频</button>
+</div>
+
+    <input id="img" type="file" style="display: none">
+
+    <input id="video" type="file" style="display: none">
+
+    <input id="doc" type="file" style="display:none;">
+    <script type="text/javascript">
+        $('#img').change(function () {
+            var formData=new FormData();
+            formData.append("img",$('#img')[0].files[0]);
+            $.ajax({
+                url:"/upload/img",
+                type:"post",
+                data:formData,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    $('#imgdiv').html('<img alt="图片" src="'+data+'" style="height: 150px;width: 150px;cursor: pointer;border-radius: 50%">')
+                }
+            })
+        });
+        $('#video').change(function () {
+            var formData=new FormData();
+            formData.append("video",$('#video')[0].files[0]);
+            $.ajax({
+                url:"/upload/video",
+                type:"post",
+                data:formData,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    $('#videodiv').html('<video controls="controls" autoplay="autoplay" style="height: 480px;width: 640px;">  <source src="'+data+'"  type="video/mp4"></source></video>'  )
+                }
+            })
+        })
+    </script>
+</body>
+</html>
