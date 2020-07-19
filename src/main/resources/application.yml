@@ -1,9 +1,9 @@
 cos:
-    secretId: AKIDpPkpyqLpxpQN4ohXYJo32lQpysVId53s
-    secretKey: gJZddMlumwpSn57sMZcOuSjmY2GrKN6Z
-    localhost: https://20200715-1301193990.cos.ap-shanghai.myqcloud.com
-    region: ap-shanghai
-    bucketName: 20200715-1301193990
+    secretId: 
+    secretKey: 
+    localhost: 
+    region: 
+    bucketName: 
 spring:
     servlet:
         multipart:
